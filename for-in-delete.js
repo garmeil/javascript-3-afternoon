@@ -11,13 +11,13 @@
   In the example below, we are accessing the property values. Uncomment the code below, run it and look at what prints in the console.
 */
 
-// var values = {
-//   one: 'These',
-//   two: ' are',
-//   three: ' the',
-//   four: ' property',
-//   five: ' values.'
-// } 
+var values = {
+  one: "These",
+  two: " are",
+  three: " the",
+  four: " property",
+  five: " values."
+};
 
 // for(var key in values) {
 //   console.log(values[key])
@@ -31,20 +31,21 @@
 //   console.log(key)
 // }
 
-
-
 ////////// PROBLEM 1 //////////
 
 /*
   Inside the function showValues, write a for in loop that concatenates each of the property values and returns the concatenated string.
 */
 
-function showValues( obj ) {
-  //Code Here
+function showValues(obj) {
+  var concat = "";
+  for (let key in obj) {
+    concat += obj[key];
+  }
+  // console.log(concat);
+  return concat;
 }
-
-
-
+// showValues(values);
 ////////// PROBLEM 2 //////////
 
 /*
@@ -54,8 +55,12 @@ function showValues( obj ) {
 */
 
 //Code Here
-
-
+const greaterThan10 = obj => {
+  for (let key in obj) {
+    obj[key] > 10 ? (obj[key] = 0) : false;
+  }
+  return obj;
+};
 
 ////////// PROBLEM 3 //////////
 
@@ -66,9 +71,12 @@ function showValues( obj ) {
 */
 
 //Code Here
-
-
-
+const double = obj => {
+  for (let key in obj) {
+    obj[key] *= 2;
+  }
+  return obj;
+};
 ////////// PROBLEM 4 //////////
 
 /*
@@ -80,9 +88,13 @@ function showValues( obj ) {
 */
 
 //Code Here
-
-
-
+const secrets = obj => {
+  let stringy = "";
+  for (let key in obj) {
+    key.startsWith("sh") ? (stringy += obj[key]) : false;
+  }
+  return stringy;
+};
 /* 
   Sometimes it's needed to delete object properties. 
   All you need is the word delete before a reference to the object property value. 
@@ -101,8 +113,6 @@ function showValues( obj ) {
 
 // console.log(deleteAllThethings)
 
-
-
 ////////// PROBLEM 5 //////////
 
 /*
@@ -111,9 +121,10 @@ function showValues( obj ) {
 */
 
 //Code Here
-
-
-
+const removePassword = obj => {
+  delete obj.password;
+  return obj;
+};
 ////////// PROBLEM 6 //////////
 
 // Do not edit the code below.
@@ -122,7 +133,7 @@ var deleteTheBigNumbers = {
   second: 20,
   third: 110,
   fourth: 200
-}
+};
 // Do not edit the code above.
 
 /*
@@ -130,9 +141,9 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
-
-
-
+for (let key in deleteTheBigNumbers) {
+  deleteTheBigNumbers[key] > 100 ? delete deleteTheBigNumbers[key] : false;
+}
 ////////// PROBLEM 7 //////////
 
 /*
@@ -143,9 +154,12 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
-
-
-
+const startsWithK = obj => {
+  for (let key in obj) {
+    key.startsWith("k") ? delete obj[key] : false;
+  }
+  return obj;
+};
 ////////// PROBLEM 8 //////////
 
 /*
@@ -158,5 +172,9 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
-
-
+const hiddenTreasure = obj => {
+  for (let key in obj) {
+    !obj[key].includes("treasure") ? delete obj[key] : false;
+  }
+  return obj;
+};
