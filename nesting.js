@@ -79,8 +79,8 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 
 //Code Here
 const removeDuplicates = () => {
-  for (let i = workplaceAccidents.length - 1; i > 0; i++) {
-    for (let j = workplaceAccidents.length - 1; i > 0; i++) {
+  for (let i = workplaceAccidents.length - 1; i >= 0; i--) {
+    for (let j = workplaceAccidents.length - 1; j >= 0; j--) {
       if (workplaceAccidents[i] === workplaceAccidents[j] && i != j)
         workplaceAccidents.splice(i, 1);
     }
@@ -158,7 +158,7 @@ const recordCleaner = () => {
 ////////// PROBLEM 5 //////////
 
 // Do not edit the code below.
-var numsArr = [[1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
+var numsArr = [["1", 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
 // Do not edit the code above.
 
 /*
@@ -171,8 +171,12 @@ var numsArr = [[1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
 */
 
 //Code Here
-const looper = () => {
+function looper() {
   for (i = 0; i < numsArr.length; i++) {
-    numsArr[i] = numsArr[i].map(val => (val % 2 === 0 ? "Even" : "Odd"));
+    numsArr[i] = numsArr[i].map(val => {
+      return Number(val) % 2 === 0 ? "even" : "odd";
+    });
   }
-};
+  return numsArr;
+}
+console.log(looper(numsArr));
